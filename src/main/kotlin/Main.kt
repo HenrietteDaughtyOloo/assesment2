@@ -2,6 +2,21 @@ fun main(){
 //    random("Hamisi")
     println("nai")
     multiples()
+
+    var account1 = CurrentAccount("1689923467", "Tom Cruise", 45000.00)
+    account1.deposit(6000.05)
+    account1.withdraw(500.00)
+    account1.details()
+
+    var savings1 = SavingsAccount("165432345", "Thomas Shelby", 449000.55, 3)
+    savings1.withdraw(450.00)
+    println(savings1.withdrawals)
+
+
+    var savings2 = SavingsAccount("164454125", "Steph Curry", 449000.55, 7)
+    savings2.withdraw(450.00)
+    savings2.details()
+//    savings2
 }
 //Write and invoke one function that takes in a random string and returns the
 //following values: first character, last character, length of the string and
@@ -62,4 +77,37 @@ fun multiples(){
 //c. details() - Prints out the account number and balance and name in
 //this format: “Account number x with balance y is operated by z” (6pts)
 
-class CurrentAccount(var accountNumber:String, var accountname:String, var balance:Double)
+open class CurrentAccount(var accountNumber:String, var accountname:String, var balance:Double){
+    fun deposit(amount: Double){
+        balance += amount
+    }
+  open fun withdraw(amount: Double){
+        balance -=amount
+    }
+    fun details(){
+        println("Account number $accountNumber with balance $balance is operated by $accountname")
+    }
+}
+
+//question 6
+//Create another class SavingsAccount. It has the same functions and
+//attributes as the current account except for one attribute, withdrawals: Int.
+//Withdrawals is a counter variable that is used to keep track of how many
+//withdrawals have been made from the account in a year. The only other
+//difference is that the savings account withdraw() method first checks if the
+//number of withdrawals is less than 4 for it to allow one to withdraw money
+//from the account. It also increments the withdrawals attribute after a
+//successful withdrawal (6pts)
+
+class SavingsAccount(accountNumber: String, accountname: String, balance: Double, var withdrawals:Int):CurrentAccount(accountNumber,
+    accountname, balance,  ){
+    override fun withdraw(amount: Double) {
+        if (withdrawals<4){
+            println("You Can Withdraw")
+            withdrawals++
+        }
+        else{
+            println("You Cannot withdraw")
+        }
+    }
+}
