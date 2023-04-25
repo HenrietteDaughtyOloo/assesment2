@@ -1,6 +1,7 @@
 fun main(){
-//    random("Hamisi")
-    println("nai")
+   var one = "Hamisi"
+
+    println(one.random())
     multiples()
 
     var account1 = CurrentAccount("1689923467", "Tom Cruise", 45000.00)
@@ -21,13 +22,14 @@ fun main(){
 //Write and invoke one function that takes in a random string and returns the
 //following values: first character, last character, length of the string and
 //whether it begins with a vowel or not. (6pts)
-//data class randomString(var str: String)
-//fun random(str:String):randomString{
-//    var firstChar = str[0]
-//    var lastChar = str[-1]
-//    var length = str.length
-//    return randomString("Hamisi")
-//}
+data class randomString(var stringed: String)
+fun random(str:String):String{
+    var firstChar = str[0]
+    var lastChar = str[-1]
+    var length = str.length
+    var all = ("Firstchar is $firstChar, last Char = $lastChar,  length is $length")
+    return all
+}
 
 
 //Question2
@@ -42,11 +44,10 @@ fun main(){
 
 fun validatePassword(password:String){
     while (password!=="password"){
-//        if (password.length in 8..16 && password. ){
-//
-//        }
+     //if (password.length in 8..16 && password.contains(0..9) ){
+        }
     }
-}
+
 
 //Question 3
 //Create a function that prints out multiples of 6 and 8 between 1 and 1000. For
